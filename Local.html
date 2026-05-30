@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Denver Clock Widget</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap" rel="stylesheet">
+
+<style>
+body{
+    margin:0;
+    font-family:'Fira Sans',sans-serif;
+    background:transparent;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+@keyframes neonFlicker{
+    0%{opacity:1;}
+    100%{opacity:.85;}
+}
+
+.container{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:8px 16px;
+    border:2px solid #12a312;
+    background:rgba(29,29,29,.95);
+    box-shadow:0 0 15px rgba(18,163,18,.3);
+    min-width: 300px;
+}
+
+.block{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.icon{
+    width:24px;
+    height:24px;
+    color:#66ffb2;
+    filter:drop-shadow(0 0 8px #00ff88);
+}
+
+.text{
+    color:#66ffb2;
+    font-size:22px;
+    font-weight:700;
+    text-shadow:0 0 8px #00ff88;
+    animation:neonFlicker 1.8s infinite alternate;
+    white-space:nowrap;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="block">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+        </svg>
+
+        <div class="text">Denver, EUA</div>
+    </div>
+
+    <div class="block">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
+        </svg>
+
+        <div id="clock" class="text">00:00:00</div>
+    </div>
+
+</div>
+
+<script>
+function updateDenverTime(){
+
+    const options = {
+        timeZone: 'America/Denver',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+    };
+
+    const denverTime = new Intl.DateTimeFormat(
+        'pt-BR',
+        options
+    ).format(new Date());
+
+    document.getElementById('clock').textContent = denverTime;
+}
+
+updateDenverTime();
+setInterval(updateDenverTime,1000);
+</script>
+
+</body>
+</html>
