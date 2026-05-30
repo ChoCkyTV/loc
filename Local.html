@@ -1,108 +1,108 @@
 <!DOCTYPE html>
-<HTML língua="pt-BR">
-<caboça>
-<meta conjunto de caracteres="UTF-8">
-<título>Widget do relacionamento de Denver</título>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Denver Clock Widget</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&exibir=trocarte" relação="folha de estilo">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@700&display=swap" rel="stylesheet">
 
-<estilo>
-corpo{
-    marco:0;
-    família de fontes:'Fira Sans',sem serifa;
-    fundo:transparente;
-    exibir:flexível;
-    justificar-conteúdo:centro;
-    alinhar itens:centro;
-    alta:100vh;
+<style>
+body{
+    margin:0;
+    font-family:'Fira Sans',sans-serif;
+    background:transparent;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
 }
 
 @keyframes neonFlicker{
-    0%{opacidade:1;}
-    100%{opacidade:.85;}
+    0%{opacity:1;}
+    100%{opacity:.85;}
 }
 
-.destino{
-    exibir:flexível;
-    alinhar itens:centro;
-    lacuna:18px;
-    enchimento:8px 16px;
-    fronteira:2px sólido #12a312;
-    fundo:RGBA(29,29,29,.95);
-    caixa-sombra:0 0 15px RGBA(18.163.18,.3);
-    largura mínima: 300px;
+.container{
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:8px 16px;
+    border:2px solid #12a312;
+    background:rgba(29,29,29,.95);
+    box-shadow:0 0 15px rgba(18,163,18,.3);
+    min-width: 300px;
 }
 
-.bloquear{
-    exibir:flexível;
-    alinhar itens:centro;
-    lacuna:8px;
+.block{
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
-.ícone{
-    largura:24px;
-    alta:24px;
-    cor:#66ffb2;
-    filtro:sombra projetada(0 0 8px #00ff88);
+.icon{
+    width:24px;
+    height:24px;
+    color:#66ffb2;
+    filter:drop-shadow(0 0 8px #00ff88);
 }
 
-.texto{
-    cor:#66ffb2;
-    tamanho da fonte:22px;
-    peso da fonte:700;
-    sombra de texto:0 0 8px #00ff88;
-    animação:neonFlicker 1,8s infinito alternar;
-    espaço em branco:embrulha agora;
+.text{
+    color:#66ffb2;
+    font-size:22px;
+    font-weight:700;
+    text-shadow:0 0 8px #00ff88;
+    animation:neonFlicker 1.8s infinite alternate;
+    white-space:nowrap;
 }
-</estilo>
-</caboça>
+</style>
+</head>
 
-<corpo>
+<body>
 
-<dividir classe="contêiner">
+<div class="container">
 
-    <dividir classe="bloco">
-        <svg classe="ícone" caixa de visualização="0 0 24 24" pregador="nenhum" golpe="coritual" largura fazer trabalho="2">
-            <caminho d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
-            <círculo cx="12" por favor="10" r="3"/>
+    <div class="block">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 1 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
         </svg>
 
-        <dividir classe="texto">Bennett, EUA</dividir>
-    </dividir>
+        <div class="text">Denver, EUA</div>
+    </div>
 
-    <dividir classe="bloco">
-        <svg classe="ícone" caixa de visualização="0 0 24 24" pregador="nenhum" golpe="coritual" largura fazer trabalho="2">
-            <círculo cx="12" por favor="12" r="10"/>
-            <polilina pontos="12,6 12,12 16,14"/>
+    <div class="block">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12,6 12,12 16,14"/>
         </svg>
 
-        <dividir id="relógio" classe="texto">00:00:00</dividir>
-    </dividir>
+        <div id="clock" class="text">00:00:00</div>
+    </div>
 
-</dividir>
+</div>
 
-<roteiro>
-função atualizarDenverTime(){
+<script>
+function updateDenverTime(){
 
-    const operações = {
-        fuso horário: 'América/Denver',
-        hora: '2 dígitos',
-        minuto: '2 dígitos',
-        segundo: '2 dígitos',
-        hora12: falso
+    const options = {
+        timeZone: 'America/Denver',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
     };
 
-    const tempo de denver = novo Internacional.Formato DataHora(
+    const denverTime = new Intl.DateTimeFormat(
         'pt-BR',
-        opiniões
-    ).formato(novo Data());
+        options
+    ).format(new Date());
 
-    documento.obterElementoPorId('relógio').textoConteúdo = tempo de denver;
+    document.getElementById('clock').textContent = denverTime;
 }
 
-updateDenverTime 100%{opacidade:.85;});
-setInterval(atualizaçãoDenverTime,1000);
-</roteiro>
+updateDenverTime();
+setInterval(updateDenverTime,1000);
+</script>
 
-</corpo>
-</HTML>
+</body>
+</html>
