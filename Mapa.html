@@ -8,13 +8,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{background:transparent;overflow:hidden;font-family:'Fira Sans',sans-serif;}
-.container{width:400px;height:160px;border:2px solid #12a312;background:rgba(29,29,29,.95);box-shadow:0 0 15px rgba(18,163,18,.35),inset 0 0 15px rgba(18,163,18,.08);overflow:hidden;}
-.location-box{display:flex;align-items:center;gap:15px;padding:15px;border-bottom:1px solid rgba(18,163,18,.4);}
-.location-icon{width:52px;height:52px;flex-shrink:0;filter:drop-shadow(0 0 10px #00ff88);}
+.container{width:400px;height:220px;border:2px solid #12a312;background:rgba(29,29,29,.95);box-shadow:0 0 15px rgba(18,163,18,.35),inset 0 0 15px rgba(18,163,18,.08);overflow:hidden;}
+.location-box{display:flex;align-items:center;gap:15px;padding:12px 15px;border-bottom:1px solid rgba(18,163,18,.4);}
+.location-icon{width:42px;height:42px;flex-shrink:0;filter:drop-shadow(0 0 10px #00ff88);}
 .location-text{display:flex;flex-direction:column;min-width:0;}
-.city{color:#ffffff;font-size:24px;font-weight:700;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.state{color:#66ffb2;font-size:15px;margin-top:5px;text-shadow:0 0 8px #00ff88;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.bottom-row{display:flex;justify-content:space-between;align-items:center;padding:15px;}
+.city{color:#ffffff;font-size:20px;font-weight:700;line-height:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.state{color:#66ffb2;font-size:13px;margin-top:4px;text-shadow:0 0 8px #00ff88;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.bottom-row{display:flex;justify-content:space-between;align-items:center;padding:12px 15px;}
 .stat{display:flex;align-items:center;gap:10px;}
 .icon-small{width:28px;height:28px;color:#66ffb2;filter:drop-shadow(0 0 8px #00ff88);}
 .label{color:#bdbdbd;font-size:11px;letter-spacing:1px;}
@@ -24,6 +24,7 @@ body{background:transparent;overflow:hidden;font-family:'Fira Sans',sans-serif;}
 </head>
 <body>
 <div class="container">
+    <!-- Localização atual -->
     <div class="location-box">
         <svg class="location-icon" viewBox="0 0 24 24" fill="none">
             <path d="M12 22s8-7 8-13a8 8 0 10-16 0c0 6 8 13 8 13z" stroke="#66ffb2" stroke-width="2"/>
@@ -34,6 +35,17 @@ body{background:transparent;overflow:hidden;font-family:'Fira Sans',sans-serif;}
             <div id="state" class="state">Obtendo localização...</div>
         </div>
     </div>
+    <!-- Destino -->
+    <div class="location-box">
+        <svg class="location-icon" viewBox="0 0 24 24" fill="#66ffb2" style="filter:drop-shadow(0 0 10px #00ff88)">
+            <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+        </svg>
+        <div class="location-text">
+            <div class="city">ORLANDO</div>
+            <div class="state">Flórida, United States</div>
+        </div>
+    </div>
+    <!-- Stats -->
     <div class="bottom-row">
         <div class="stat">
             <svg class="icon-small" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
